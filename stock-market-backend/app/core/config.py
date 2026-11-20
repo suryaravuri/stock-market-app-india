@@ -9,12 +9,14 @@ class Settings(BaseSettings):
     # Application
     app_name: str = "Stock Market Application"
     app_version: str = "1.0.0"
+    # US | IN | ALL - which market this deployment serves (app/market/app_market.py)
+    app_market: str = "IN"
     debug: bool = False
 
     # PostgreSQL
     database_host: str = "localhost"
     database_port: int = 5433
-    database_name: str = "stockmarket"
+    database_name: str = "stockmarket_in"
     database_user: str = "stockuser"
     database_password: str
 
@@ -49,7 +51,7 @@ class Settings(BaseSettings):
     kite_api_key: str | None = None
     kite_api_secret: str | None = None
     # Where the backend sends the browser after the Zerodha login callback.
-    zerodha_post_login_redirect_url: str = "http://localhost:5173/"
+    zerodha_post_login_redirect_url: str = "http://localhost:5174/"
     # Master switch for sending orders to Zerodha at all.
     zerodha_trading_enabled: bool = False
     # When true, orders pass every check and are recorded, but are NOT sent.
@@ -158,8 +160,6 @@ class Settings(BaseSettings):
     # Leave unset to disable the webhook endpoint.
     tradingview_webhook_secret: str | None = None
 
-    # Upstox OAuth callback (must match the Upstox developer console exactly)
-    upstox_redirect_uri: str | None = None
 
     # Backtesting: separate database on the same Postgres server, so replaying
     # history never touches live signal/position tables.

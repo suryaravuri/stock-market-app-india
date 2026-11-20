@@ -19,8 +19,6 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LockResetIcon from "@mui/icons-material/LockReset";
 import ShowChartIcon from "@mui/icons-material/ShowChart";
 import ScienceIcon from "@mui/icons-material/Science";
-import CandlestickChartIcon from "@mui/icons-material/CandlestickChart";
-import TimelineIcon from "@mui/icons-material/Timeline";
 
 import {
   Outlet,
@@ -32,7 +30,6 @@ import { useAuth } from "../context/AuthContext";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import GridViewIcon from "@mui/icons-material/GridView";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 
 const navigationItems = [
   {
@@ -70,7 +67,6 @@ const navigationItems = [
     path: "/validation",
     icon: <AssessmentIcon fontSize="small" />,
   },
-  { label: "Options", path: "/options", icon: <ShowChartIcon fontSize="small" /> },
   { label: "Futures", path: "/futures", icon: <ShowChartIcon fontSize="small" /> },
   {
     label: "Trades & P&L",
@@ -81,11 +77,6 @@ const navigationItems = [
   label: "Sector Heatmap",
   path: "/heatmap",
   icon: <GridViewIcon fontSize="small" />,
-  },
-  {
-    label: "US Paper P&L",
-    path: "/paper-pnl",
-    icon: <AccountBalanceWalletIcon fontSize="small" />,
   },
   {
     label: "Backtests",

@@ -141,6 +141,11 @@ class EarlyAlertStream:
 
     # ---------------------------------------------------------- lifecycle
     def start(self) -> None:
+        from app.market.app_market import enabled_markets
+
+        if "US" not in enabled_markets():
+            logger.info("1-minute stream off: Alpaca (US) stream is not used by the India app")
+            return
         wanted = settings.early_alerts_enabled or settings.live_bounce_enabled
         if not wanted or (self._thread and self._thread.is_alive()):
             if not wanted:
