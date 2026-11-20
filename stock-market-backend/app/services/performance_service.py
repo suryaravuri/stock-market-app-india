@@ -18,7 +18,7 @@ from app.analytics.performance import (
     round_trips,
 )
 from app.market.sectors import sector_for
-from app.market.sessions import is_indian_exchange
+from app.market.app_market import exchange_allowed
 from app.models.market_candle import MarketCandle
 from app.models.stock import Stock
 from app.models.watchlist import WatchlistStock
@@ -47,7 +47,7 @@ class PerformanceService:
         )
         if watchlist_id is not None:
             query = query.where(WatchlistStock.watchlist_id == watchlist_id)
-        stocks = [s for s in db.scalars(query).all() if not is_indian_exchange(s.exchange)]
+        stocks = [s for s in db.scalars(query).all() if exchange_allowed(s.exchange)]
 
         need = PERIOD_SESSIONS[period] + 2
         rows = []

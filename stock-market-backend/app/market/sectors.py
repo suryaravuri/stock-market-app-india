@@ -21,6 +21,15 @@ _GROUPS = {
     "FINANCIALS": "V MA BRK.B JPM BAC GS MS AXP",
     "INDUSTRIALS": "BA CAT GE HON UPS RTX LMT DE SHIP",
     "ENERGY": "OXY XOM CVX COP SLB",
+    # India (NSE/BSE symbols without the .NS / .BO suffix)
+    "IN_BANKS_FINANCE": "HDFCBANK ICICIBANK SBIN KOTAKBANK AXISBANK INDUSINDBK BAJFINANCE BAJAJFINSV",
+    "IN_IT_SERVICES": "TCS INFY WIPRO HCLTECH TECHM LTIM",
+    "IN_ENERGY_OIL_GAS": "RELIANCE ONGC BPCL IOC NTPC POWERGRID COALINDIA",
+    "IN_FMCG": "ITC HINDUNILVR NESTLEIND BRITANNIA DABUR TATACONSUM",
+    "IN_AUTO": "MARUTI TATAMOTORS M&M BAJAJ-AUTO EICHERMOT HEROMOTOCO",
+    "IN_PHARMA": "SUNPHARMA DRREDDY CIPLA DIVISLAB",
+    "IN_TELECOM": "BHARTIARTL",
+    "IN_INDUSTRIALS_METALS": "LT TATASTEEL JSWSTEEL HINDALCO ULTRACEMCO ADANIPORTS",
 }
 for _sector, _symbols in _GROUPS.items():
     for _symbol in _symbols.split():
@@ -29,6 +38,9 @@ for _sector, _symbols in _GROUPS.items():
 
 def sector_for(symbol: str, db_sector: str | None = None) -> str:
     symbol = (symbol or "").strip().upper()
+    for suffix in (".NS", ".BO"):
+        if symbol.endswith(suffix):
+            symbol = symbol[: -len(suffix)]
     if symbol in SECTOR_MAP:
         return SECTOR_MAP[symbol]
     if db_sector and db_sector.strip():

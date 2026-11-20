@@ -1,12 +1,21 @@
-﻿.env
+# secrets - never commit
+.env
 .env.*
 !.env.example
+*.pem
+*.key
+
+# python
 .venv/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# node / ui
 node_modules/
 dist/
+
+# runtime data
 logs/
 ml_data/
 ml_models/
