@@ -28,8 +28,9 @@ class Settings(BaseSettings):
     redis_port: int = 6379
 
     # Alpaca
-    alpaca_api_key: str
-    alpaca_secret_key: str
+    # Not used by the India app (APP_MARKET=IN); optional here.
+    alpaca_api_key: str = ""
+    alpaca_secret_key: str = ""
     alpaca_data_feed: str = "iex"
 
     # Authentication / JWT
